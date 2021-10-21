@@ -1,0 +1,26 @@
+<form action="/user/filter" method="POST">
+    <div>
+        <label for="name">Filter By Name: </label>
+        <input type="name" id="name" name="name" required>
+    </div>
+    <button type="submit">Enter</button>
+</form>
+
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>EMAIL</th>
+    </tr>
+    <% for(let i = 0 ; i < users.length ; i++) { %>
+        <tr>
+             <td><%= users[i].name %></td>
+             <td><%= users[i].email %></td>
+             <td>
+                 <form action="/user/<%= users[i].id %>?_method=DELETE" method="POST">
+                     <button type="submit">Delete</button>
+                 </form>
+            </td>
+        </tr>
+    <% } %>
+</table>
+<a href="/">Back</a>
