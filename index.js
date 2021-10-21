@@ -122,7 +122,7 @@ function updateUser(req, res, next) {
     if (name && (name !== user.name)) {
         users[user.id - 1].name = name
     }
-    if (email && (email !== user.email)) {
+    if (email && (email !== 'admin@gmail.com') && (email !== user.email)) {
         users[user.id - 1].email = email
     }
 
