@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const PORT = process.env.PORT || 3000;
 const session = require('express-session')
 const methodOverride = require('method-override')
 
@@ -141,8 +141,6 @@ function logout(req, res, next) {
 
 
 
-
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(PORT, () => {
+  console.log(`App listening at http://localhost:${PORT}`)
 })
