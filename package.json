@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/NguyenHuuThach/kairos-backend#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
