@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/NguyenHuuThach/kairos-backend#readme",
   "dependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/node": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -27,10 +30,6 @@
     "method-override": "^3.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.8",
-    "@babel/node": "^7.15.8",
-    "@babel/preset-env": "^7.15.8",
     "nodemon": "^2.0.14"
   }
 }

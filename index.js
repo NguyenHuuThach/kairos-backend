@@ -7,8 +7,6 @@ import bcrypt from 'bcrypt'
 const app = express()
 const PORT = process.env.PORT || 3000;
 const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
 
 
 import { ROLE, users } from './data'
