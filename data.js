@@ -6,13 +6,7 @@ const ROLE = {
 module.exports = {
   ROLE: ROLE,
   users: [
-    { id: 1, name: 'Admin', email: 'admin@gmail.com', role: ROLE.ADMIN },
-    { id: 2, name: 'Sally', email: 'sally@gmail.com', role: ROLE.BASIC },
-    { id: 3, name: 'Joe', email: 'joe@gmail.com', role: ROLE.BASIC }
+    { id: 1, name: 'Admin', email: 'admin@gmail.com', password: '$2b$10$0v9.QA3z85lMoaoTQLsRoeK.XJmoTl0dxNFMUg7nSkGIBPKCQLRHu', role: ROLE.ADMIN },
+    { id: 2, name: 'Sally', email: 'sally@gmail.com', password: '$2b$10$5QG0ThM54HukGa.zxSpOCev0Vtm6h1jMkCoBN7tbvJeX2fzwvM3sC', role: ROLE.BASIC }
   ],
-//   categories: [
-//     { id: 1, name: "Bin's category", userId: 1 },
-//     { id: 2, name: "Sally's category", userId: 2 },
-//     { id: 3, name: "Joe's category", userId: 3 }
-//   ]
 }

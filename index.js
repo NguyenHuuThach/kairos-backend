@@ -1,13 +1,20 @@
-const express = require('express')
+import express from 'express'
+import session from 'express-session'
+import methodOverride from 'method-override'
+import bcrypt from 'bcrypt'
+
+
 const app = express()
 const PORT = process.env.PORT || 3000;
-const session = require('express-session')
-const methodOverride = require('method-override')
+const saltRounds = 10;
+const myPlaintextPassword = 's0/\/\P4$$w0rD';
+const someOtherPlaintextPassword = 'not_bacon';
 
 
-const { ROLE, users } = require('./data')
-const { authUser, authRole } = require('./basicAuth')
-const { findUserById, filterUserByName, getUsers, deleteUserById } = require('./service.user')
+import { ROLE, users } from './data'
+import { authUser, authRole } from './basicAuth'
+import { findUserById, filterUserByName, getUsers, deleteUserById } from './service.user'
+
 
 app.use(session({
     secret: 'keyboard cat',
@@ -80,24 +87,27 @@ app.delete('/logout', logout)
 
 
 
-function loginUser(req, res, next) {
-    const { email } = req.body
+async function loginUser(req, res, next) {
+    const { email, password } = req.body
 
-    if (email) {
+    if (email && password) {
         const user = users.find(user => user.email === email)
         if (user) {
-            req.session.userId = user.id
-            req.session.role = user.role
+            const isValid = await bcrypt.compare(password, user.password)
+            if(isValid) {
+                req.session.userId = user.id
+                req.session.role = user.role
+            }
         }
     }
 
     next()
 }
 
-function signupUser(req, res, next) {
-    const { name, email } = req.body
+async function signupUser(req, res, next) {
+    const { name, email, password } = req.body
     
-    if (name && email) {
+    if (name && email && password) {
         const exist = users.some(user => user.email === email)
 
         if(exist) {
@@ -107,6 +117,8 @@ function signupUser(req, res, next) {
         if (!exist) {
             const user = { id: users.length + 1, name, email, role: ROLE.BASIC }
             users.push(user)
+            users[users.length - 1].password = await bcrypt.hash(password, saltRounds)
+            
             req.session.userId = user.id
             req.session.role = user.role
         }
